@@ -166,4 +166,4 @@ Repeat from step #3 until you finish all the user stories. By following these st
 <br>
 
 ## Authors
-Muhtar - [Muhtar](https://github.com/MuhtarMahmut)
+Halid - [Halid](https://github.com/haliderdur)
