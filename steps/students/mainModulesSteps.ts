@@ -5,11 +5,7 @@ import { dashboardPage } from "../../globalPagesSetup";
 
 // WRITE YOUR STEP DEFINITIONS HERE...
 
-Then(
-  "user should see {string} and {string} modules",
-  async function (booksModule: string, borrowingBooksModule: string) {
-    expect(await dashboardPage.booksLink.innerText()).toBe(booksModule);
-    expect(await dashboardPage.borrowingBooksLink.innerText()).toBe(
-      borrowingBooksModule);
-  }
+  Then("user should see {string}",async function (moduleName: string) {
+    expect(await dashboardPage.isModulePresent(moduleName)).toBeTruthy();
+}
 );
