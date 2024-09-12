@@ -16,10 +16,16 @@ export class DashboardPage extends BasePage {
 
   public readonly modules: Locator = this.page.locator("ul[id='menu_item']");
 
-  async isModulePresent(module: string) {
-    await BrowserUtility.sleep(2);
-    const MODULES = await this.modules.locator("li a span").allInnerTexts();
-    return MODULES.includes(module);
-  }
+  async getPresentModules(expectedModules: string[]): Promise<string[]> {
+    await this.page.waitForLoadState("networkidle");
+
+    const ALL_MODULES = await this.modules.locator("li a span").allInnerTexts();
+    const PRESENT_MODULES = expectedModules.filter(expected => 
+        ALL_MODULES.some(actual => 
+            actual.trim().toLowerCase() === expected.trim().toLowerCase()
+        )
+    );
+    return PRESENT_MODULES;
+}
 
 }
